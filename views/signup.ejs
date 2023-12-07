@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head') %>
+  </head>
+  <body>
+    <div class="container mw-75">
+    <%- include("./partials/navbar") %>
+    <form action="/user/signup" method="POST" enctype="multipart/form-data" class="mt-5">
+        <div class="mb-3">
+            <label for="fullname" class="form-label">Full Name</label>
+            <input type="text" name="fullname" class="form-control" id="fullname" aria-describedby="emailHelp">
+          </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" name="password" class="form-control" id="password">
+        </div>
+        <div class="mb-3">
+          <label for="profileImg" class="form-label">Profile picture</label>
+          <input type="file" name="profileImg" class="form-control" id="profileImg">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    <%- include('./partials/tail') %>
+    </div>
+  </body>
+</html>

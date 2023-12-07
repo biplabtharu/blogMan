@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head') %>
+</head>
+
+<body>
+    <div class="container mw-75">
+        <%- include("./partials/navbar") %>
+
+            <div style="display: flex; max-width: 100vw; justify-content: center; align-items: center;">
+                <div class="container mt-5" style="max-width: 100%;">
+                    <h1 class="mb-4">
+                        <%= blog.title %>
+                    </h1>
+                    <img src="<%= blog.coverImg %>" alt="" width="60%">
+                    <pre class="mt-5"
+                        style="white-space: wrap; font-size: 16px; max-width: 100%;"><%= blog.body %></pre>
+
+                    <div class="mt-4 d-flex justify-content-end align-items-center column-gap-2">
+                        <img src="<%= blog.createdBy.profileImg %>" alt="" width="40">
+
+                        <p>
+                            <%=blog.createdBy.fullname%>
+                        </p>
+                    </div>
+
+                    <form action="/blog/comment/<%= blog.id %>" method="POST" class="mt-4 mx-5">
+                        <h2>Comments (<%= comments.length %>)</h3>
+                                <% if(locals.user) {%>
+                                    <div class="mb-3">
+                                        <div class="form-floating">
+                                            <textarea class="form-control" id="body" style="height: 100px"
+                                                name="comment"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <% }%>
+                    </form>
+
+                    <div class="container comments mt-5">
+                        <% comments.forEach(comment=>{ %>
+                            <div style="display: flex; align-items: center; gap: 50px;">
+                                <div>
+                                    <img src="<%= comment.createdBy.profileImg %>" alt="" width="30">
+                                    <p>
+                                        <%= comment.createdBy.fullname%>
+                                    </p>
+                                </div>
+                                <p>
+                                    <%= comment.comment%>
+                                </p>
+                            </div>
+                            <%}) %>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <%- include('./partials/tail') %>
+    </div>
+</body>
+
+</html>

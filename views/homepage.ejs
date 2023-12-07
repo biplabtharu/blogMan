@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head') %>
+  </head>
+  <body>
+    <div class="container mw-75">
+      <%- include("./partials/navbar") %>
+    <div class="container mt-5 mx-auto d-flex row row-cols-4" style="width: 100%;">
+    <% blogs.forEach(blog=> { %>
+      <div class="card me-4 col mb-4" style="width: 18rem;" >
+        <img src="<%= blog.coverImg %>" class="card-img-top" alt="...">
+        <div class="card-body">
+          <% if(blog.title.length<=50){ %>
+              <h5 class="card-title"><%=blog.title%></h5 class="card-title">
+            <% } else{%>
+              <h5 class="card-title"><%=blog.title.slice(0,50)%>...</h5 class="card-title">
+              <% } %>
+          <a href="/blog/<%=blog.id%>" class="btn btn-primary">Read more</a>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+    <%- include('./partials/tail') %>
+    </div>
+  </body>
+</html>
+
+
